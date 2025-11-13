@@ -4,9 +4,8 @@ import { useEffect } from 'react';
 import Image from 'next/image';
 
 // Import Swiper
-import Swiper, { Autoplay, Navigation } from 'swiper';
-import 'swiper/swiper.min.css';
-Swiper.use([Autoplay, Navigation]);
+import Swiper from 'swiper/bundle';
+import 'swiper/css/bundle';
 
 // Array of carousel items
 const features = [
