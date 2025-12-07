@@ -41,19 +41,24 @@ export default function Features() {
       breakpoints: {
         320: {
           slidesPerView: 1,
+          spaceBetween: 16,
         },
         640: {
           slidesPerView: 2,
+          spaceBetween: 20,
         },
         1024: {
           slidesPerView: 3,
+          spaceBetween: 24,
         },
       },
       grabCursor: true,
       loop: false,
       centeredSlides: false,
       initialSlide: 0,
-      spaceBetween: 24,
+      slidesPerView: 1,
+      spaceBetween: 16,
+      watchOverflow: true,
       autoplay: {
         delay: 7000,
       },
@@ -65,22 +70,23 @@ export default function Features() {
   }, []);
 
   return (
-    <section className="relative">
+    <section className="relative overflow-hidden">
       {/* Bg illustration */}
       <div
-        className="absolute left-1/2 -translate-x-1/2 pointer-events-none -mt-20 -z-10"
+        className="absolute left-1/2 -translate-x-1/2 pointer-events-none -mt-20 -z-10 w-full max-w-[1440px]"
         aria-hidden="true"
       >
         <Image
           src={'/images/features-illustration.svg'}
-          className="max-w-none"
+          className="w-full h-auto"
           width={1440}
           height={440}
           alt="Illustration"
+          style={{ maxWidth: '100%', height: 'auto' }}
         />
       </div>
-      <div className="max-w-6xl mx-auto px-4 sm:px-6">
-        <div className="py-12 md:py-20">
+      <div className="max-w-6xl mx-auto px-4 sm:px-6 w-full">
+        <div className="py-12 md:py-20 w-full">
           {/* Section header */}
           <div className="max-w-3xl mx-auto text-center pb-12 md:pb-20">
             <h2 className="h2 font-sans mb-4">Lorem ipsum dolor sit amet</h2>
@@ -92,8 +98,8 @@ export default function Features() {
             </div>
           </div>
           {/* Carousel */}
-          <div className="carousel swiper-container">
-            <div className="swiper-wrapper">
+          <div className="carousel swiper-container w-full overflow-visible">
+            <div className="swiper-wrapper w-full">
               {features.map((feature, index) => (
                 <div
                   key={index}

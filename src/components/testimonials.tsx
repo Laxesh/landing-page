@@ -42,62 +42,57 @@ export default function TestimonialsCarousel() {
   ];
 
   return (
-    <section className="relative before:pointer-events-none before:absolute before:inset-0 before:-z-10 before:h-[120%] before:bg-gradient-to-b before:from-gray-100">
+    <section className="relative overflow-hidden before:pointer-events-none before:absolute before:inset-0 before:-z-10 before:h-[120%] before:bg-gradient-to-b before:from-gray-100">
       {/* Illustration */}
       <div
-        className="hidden lg:block absolute bottom-0 left-1/2 -translate-x-1/2 -mb-24 pointer-events-none -z-10"
+        className="hidden lg:block absolute bottom-0 left-1/2 -translate-x-1/2 -mb-24 pointer-events-none -z-10 w-full max-w-[1440px]"
         aria-hidden="true"
       >
         <Image
           src={'/images/pricing-illustration.svg'}
-          className="max-w-none"
+          className="w-full h-auto"
           width={1440}
           height={440}
           alt="Pricing Illustration"
+          style={{ maxWidth: '100%', height: 'auto' }}
         />
       </div>
-      <div className="pt-12 md:pt-20">
-        <div className="mx-auto max-w-6xl px-4 sm:px-6">
+      <div className="pt-12 md:pt-20 w-full">
+        <div className="mx-auto max-w-6xl px-4 sm:px-6 w-full">
           <div className="mx-auto max-w-3xl text-center">
             <h2 className="text-3xl font-bold md:text-4xl">
               Top startups love Simple
             </h2>
           </div>
         </div>
-        <div className="relative mx-auto flex max-w-[94rem] justify-center">
+        <div className="relative mx-auto w-full px-4 sm:px-6">
           <div
-            className="absolute bottom-20 -z-10 -translate-x-36"
+            className="absolute bottom-20 left-1/2 -translate-x-1/2 -z-10 w-full max-w-4xl"
             aria-hidden="true"
           >
-            <div className="h-80 w-80 rounded-full bg-gradient-to-tr from-blue-500 to-gray-900 opacity-30 blur-[160px] will-change-[filter]" />
+            <div className="h-80 w-full max-w-4xl mx-auto rounded-full bg-gradient-to-tr from-blue-500 to-gray-900 opacity-30 blur-[160px] will-change-[filter]" />
           </div>
 
           {/* Row */}
-          <div className="group inline-flex w-full flex-nowrap py-12 [mask-image:_linear-gradient(to_right,transparent_0,_black_10%,_black_90%,transparent_100%)] md:py-20">
-            <div className="flex animate-[infinite-scroll_60s_linear_infinite] items-start justify-center group-hover:[animation-play-state:paused] md:justify-start [&>*]:mx-3">
+          <div className="group w-full py-12 md:py-20 overflow-hidden">
+            <div className="flex animate-[infinite-scroll_60s_linear_infinite] items-start justify-start gap-6 w-max group-hover:[animation-play-state:paused] px-4">
               {/* Items */}
               {testimonials.map((testimonial, index) => (
                 <Testimonial
                   key={index}
                   testimonial={testimonial}
-                  className="w-[22rem] transition-transform duration-300 group-hover:rotate-0"
+                  className="w-[calc(100vw-2rem)] sm:w-[28rem] flex-shrink-0 transition-transform duration-300 group-hover:rotate-0"
                 >
                   {testimonial.content}
                 </Testimonial>
               ))}
-            </div>
-            {/* Duplicated element for infinite scroll */}
-            <div
-              className="flex animate-[infinite-scroll_60s_linear_infinite] items-start justify-center group-hover:[animation-play-state:paused] md:justify-start [&>*]:mx-3"
-              aria-hidden="true"
-            >
-              {/* Items */}
+              {/* Duplicated items for infinite scroll */}
               {testimonials.map((testimonial, index) => (
                 <Testimonial
-                  key={index}
+                  key={`duplicate-${index}`}
                   testimonial={testimonial}
                   cloned={true}
-                  className="w-[22rem] transition-transform duration-300 group-hover:rotate-0"
+                  className="w-[calc(100vw-2rem)] sm:w-[28rem] flex-shrink-0 transition-transform duration-300 group-hover:rotate-0"
                 >
                   {testimonial.content}
                 </Testimonial>
